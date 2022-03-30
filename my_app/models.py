@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
-from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.models import AbstractUser
+from django.contrib.auth import get_user_model
 
 
 # Create your models here.
@@ -8,6 +9,7 @@ class Post(models.Model):
     heading = models.CharField(max_length=124, null=False, blank=False)
     text = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
+    author = models.ForeignKey('CustomUser', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.heading
@@ -16,11 +18,17 @@ class Post(models.Model):
         return reverse("posts")
 
 
-class CustomUser(AbstractBaseUser):
-    
-    email = models.EmailField(verbose_name="email address", unique=True, max_length=124)
-    is_active = models.BooleanField(default=False)
-    staff = models.BooleanField(default=False)
-    admin = models.BooleanField(default=False)
+class CustomUser(AbstractUser):
+    age = models.PositiveIntegerField(null=True, blank=True)
 
-    REQUIRED_FIELDS = ['email']
+
+class Comment(models.Model):
+    author = models.ForeignKey("CustomUser", on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
+    comment = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.comment
+
+    def get_absolute_url(self):
+        return reverse("posts")

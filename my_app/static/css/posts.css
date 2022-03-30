@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+.post {
+  padding: 30px;
+  margin: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.date {
+  opacity: 0.6;
+}
+
+.check-post {
+  color: black;
+}
+
+.check-post:hover {
+  color: rebeccapurple;
+}
+
+.aditional-info {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.heading {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  font-family: 'Quicksand', sans-serif;
+}

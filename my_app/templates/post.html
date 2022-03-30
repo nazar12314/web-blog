@@ -1,16 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
+{% extends 'base.html' %} {% load static %} {% block links %}
+<link rel="stylesheet" href="{% static 'css/post.css' %}" />
+{% endblock %} {% block content %}
+<div class="wrapper">
+  <div class="upper-panel">
     <h1>{{ object.heading }}</h1>
-    <p>{{ object.text }}</p>
-    <h4>Created at: {{object.created}}</h4>
-    <a href="{% url 'delete' object.pk %}">delete</a>
-    <a href="{% url 'update' object.pk %}">update </a>
-  </body>
-</html>
+    <div class="upper-panel-buttons">
+      <a class="delete" href="{% url 'delete' object.pk %}">delete</a>
+      <a class="update" href="{% url 'update' object.pk %}">update </a>
+    </div>
+  </div>
+  <p class="text">{{ object.text }}</p>
+  <h4 class="created">Created at: {{object.created}}</h4>
+</div>
+<div class="wrapper comments">
+  <h1 style="margin-bottom: 20px">Comments</h1>
+  {% for comment in object.comments.all %}
+  <div style="display: flex" class="comment">
+    <div style="opacity: 0.6" class="comment-author">{{ comment.author }}</div>
+    <span style="margin: 0 10px">|</span>
+    <div class="comment-text">{{ comment.comment }}</div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

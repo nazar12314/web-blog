@@ -1,16 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    {% for post in object_list %}
-    <h1>{{ post.heading }}</h1>
-    <p>{{ post.text }}</p>
-    <a href="{% url 'post' post.pk %}">check post</a>
-    {% endfor %}
-  </body>
-</html>
+{% extends 'base.html' %} {% load static %} {% block links %}
+<link rel="stylesheet" href="{% static 'css/posts.css' %}" />
+{% endblock %} {% block content %} {% for post in object_list %}
+<div class="post">
+  <h2 class="heading">{{ post.heading }}</h2>
+  <p class="text">{{ post.text }}</p>
+  <div class="aditional-info">
+    <h4>
+      <i>
+        Made by {{ post.author }} |
+        <span class="date">{{ post.created }}</span></i
+      >
+    </h4>
+    <a class="check-post" href="{% url 'post' post.pk %}">check post</a>
+  </div>
+</div>
+{% endfor %} {% endblock %}

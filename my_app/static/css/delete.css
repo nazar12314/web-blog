@@ -1,0 +1,36 @@
+.wrapper {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 150px;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.precaution {
+  text-align: center;
+}
+
+.button-wrapper > a {
+  color: white;
+  background-color: red;
+  padding: 10px 30px;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+.button-wrapper > button {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  padding: 10px 30px;
+  background-color: green;
+  color: white;
+  font-size: 18px;
+  border-radius: 10px;
+  margin-right: 30px;
+}

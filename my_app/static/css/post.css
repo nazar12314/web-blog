@@ -1,0 +1,40 @@
+.wrapper {
+  max-width: 70%;
+  padding: 30px;
+  margin: 0 auto;
+  margin-top: 100px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.wrapper:nth-child(2) {
+  margin-top: 40px !important;
+}
+
+.upper-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.upper-panel-buttons > a {
+  padding: 7px;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.delete {
+  background-color: red;
+}
+
+.update {
+  background-color: rgb(46, 46, 187);
+}
+
+.created {
+  margin-top: 30px;
+}
+
+.text {
+  margin-top: 30px;
+}
